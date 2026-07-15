@@ -1,4 +1,4 @@
-def create_earth() :
+def create_fire() :
     pass
 
 def create_water() : 
