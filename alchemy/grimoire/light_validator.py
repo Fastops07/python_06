@@ -1,9 +1,11 @@
-from .light_spellbook import light_spell_allowed_ingredients
+def validate_ingredients(ingredients: str) -> str:
+    from .light_spellbook import light_spell_allowed_ingredients
 
+    allowed_ingredients: list[str] = light_spell_allowed_ingredients()
+    normalized_ingredients: str = ingredients.lower()
 
-def validate_ingredients(ingredients: str) -> tuple[str, str]:
-    valid_ingredients = light_spell_allowed_ingredients()
-    for valid_ingredient in valid_ingredients:
-        if ingredients == valid_ingredient:
-            return ("VALID", ingredients)
-    return ("INVALID", ingredients)
+    for allowed_ingredient in allowed_ingredients:
+        if allowed_ingredient in normalized_ingredients:
+            return f"{ingredients} - VALID"
+
+    return f"{ingredients} - INVALID"
